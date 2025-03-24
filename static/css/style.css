@@ -27,9 +27,15 @@ footer {
 }
 
 #btn_,
-#input_,
 #result,
 #footer_,
-#link_ {
+#link_,
+#btn_,
+#result {
   margin: 5px;
+}
+#input_ {
+  margin: 5px;
+  width: 420px;
+  padding: 5px;
 }

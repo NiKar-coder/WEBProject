@@ -1,15 +1,23 @@
 {% extends "source.html" %} {% block content %}
-<form method="post">
-  <div class="container">
-    <div class="row">
-      <div class="col text-center" id="input_">
-        <input class="form-text" type="text" name="input_" placeholder="Введите номер для поиска" autofocus />
-        <button class="btn btn-success btn-sm" type="submit button" id="btn_" name="searchBtn">Поиск!</button>
-        <div id="result">
-          <label class="text-success">{{result}}</label>
-        </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <div class="container d-flex justify-content-center">
+        <form method="post">
+          <input
+            class="form-control"
+            type="text"
+            name="input_"
+            id="input_"
+            placeholder="Введите номер для поиска"
+          />
+          <button type="submit" id="btn_" class="btn btn-success">
+            Найти!
+          </button>
+        </form>
       </div>
+      <label class="text-success" id="result">{{result}}</label>
     </div>
   </div>
-</form>
+</div>
 {% endblock %}

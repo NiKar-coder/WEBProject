@@ -1,12 +1,58 @@
 {% extends "source.html" %} {% block content %}
-<form method="post">
-  <div class="container">
-    <div class="row">
-      <div class="col text-center" id="input_">
-        <input class="form-text" type="text" name="input_" placeholder="Введите номер для добавления" autofocus />
-        <button class="btn btn-success btn-sm" type="submit button" id="btn_" name="addBtn">Добавить!</button>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <div class="container d-flex justify-content-center">
+        <form method="post">
+          <input
+            class="form-control"
+            type="text"
+            name="numberInput"
+            id="input_"
+            placeholder="Введите номер для добавления"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="surnameInput"
+            id="input_"
+            placeholder="Введите фамилию для добавления"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="patronymicInput"
+            id="input_"
+            placeholder="Введите отчество для добавления"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="flatInput"
+            id="input_"
+            placeholder="Введите номер квартиры для добавления"
+          />
+          <input
+            class="form-control"
+            type="tel"
+            name="phoneInput"
+            id="input_"
+            placeholder="Введите номер телефона для добавления"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="carInput"
+            id="input_"
+            placeholder="Введите номер машины для добавления"
+          />
+          <button type="submit" id="btn_s" class="btn btn-success">
+            Добавить!
+          </button>
+        </form>
       </div>
     </div>
   </div>
-  {% endblock %}
-</form>
+</div>
+
+{% endblock %}

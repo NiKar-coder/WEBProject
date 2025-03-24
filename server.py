@@ -8,18 +8,20 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    rendered_template = render_template('index.html', result="")
     if request.method == 'POST':
-        if 'searchBtn' in request.form:
-            try:
-                db_sess = db_session.create_session()
-                input_ = request.form['input_']
-                for owner in db_sess.query(Owner).filter(Owner.carsNumber
-                                                         == input_):
-                    res = f"ФИО: {owner.surname} {owner.name} {owner.patronymic}, квартира: {owner.flat}, телефон: {owner.phone}, модель машины: {owner.carsModel}"
-                db_sess.close()
-                return render_template('index.html', result=res)
-            except Exception:
-                return render_template('index.html', result="")
+        try:
+            db_sess = db_session.create_session()
+            input_ = request.form['input_']
+            for owner in db_sess.query(Owner).filter(Owner.carsNumber
+                                                     == input_):
+                res = f"ФИО: {owner.surname} {owner.name} {owner.patronymic}, квартира: {owner.flat}, телефон: {owner.phone}, модель машины: {owner.carsModel}"
+            db_sess.close()
+            return render_template('index.html', result=res)
+        except Exception:
+            return rendered_template
+    else:
+        return rendered_template
 
 
 @app.route('/add', methods=['GET', 'POST'])

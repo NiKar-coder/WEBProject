@@ -15,7 +15,12 @@
   </head>
   <body id="main" class="theme-light">
     <header role="heading" class="container">
-      <button class="btn btn-sm btn-info" onclick="darkLight()" style="cursor: help" id="themeToggler">
+      <button
+        class="btn btn-sm btn-info"
+        onclick="darkLight()"
+        style="cursor: help"
+        id="themeToggler"
+      >
         Темный режим
       </button>
       <h1 class="text-center text-danger">CarNumbers</h1>
@@ -24,9 +29,15 @@
   </body>
   <footer role="contentinfo" class="container">
     <div id="footer_">
-      <a class="link-opacity-100" href="{{ url_for('index') }}" id="link_">Домой</a>
-      <a class="link-opacity-100" href="{{ url_for('add') }}" id="link_">Добавить</a>
-      <a class="link-opacity-100" href="{{ url_for('remove') }}" id="link_">Удалить</a>
+      <a class="link-opacity-100 link-underline-info" href="{{ url_for('index') }}" id="link_"
+        >Домой</a
+      >
+      <a class="link-opacity-100 link-underline-info" href="{{ url_for('add') }}" id="link_"
+        >Добавить</a
+      >
+      <a class="link-opacity-100 link-underline-info" href="{{ url_for('remove') }}" id="link_"
+        >Удалить</a
+      >
     </div>
   </footer>
   <script src="static/scripts/themeToggle.js"></script>
