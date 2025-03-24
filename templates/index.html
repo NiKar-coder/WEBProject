@@ -1,0 +1,16 @@
+{% extends "source.html" %} {% block content %}
+<form method="post">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center" id="input_">
+        <input class="form-text" type="text" name="input_" placeholder="Введите номер для поиска" autofocus />
+        <button class="btn btn-success btn-sm" type="submit button" id="search_btn" name="count">Поиск!</button>
+        <div id="result">
+          <label class="text-success">Результат поиска:</label>
+          <label class="text-success">{{result}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
