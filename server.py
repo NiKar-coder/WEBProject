@@ -3,7 +3,6 @@ from data import db_session
 from data.owners import Owner
 
 db_session.global_init("db/CarNumbers.db")
-# owner = Owner()
 app = Flask(__name__)
 
 

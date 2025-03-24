@@ -6,7 +6,7 @@ class Owner(SqlAlchemyBase):
     __tablename__ = 'owners'
 
     carsNumber = sqlalchemy.Column(sqlalchemy.String,
-                               primary_key=True)
+                                   primary_key=True)
     surname = sqlalchemy.Column(sqlalchemy.String)
     name = sqlalchemy.Column(sqlalchemy.String)
     patronymic = sqlalchemy.Column(sqlalchemy.String)
