@@ -26,9 +26,10 @@ footer {
   border-top: 10px solid darkgray;
 }
 
-#search_btn,
+#btn_,
 #input_,
 #result,
-#footer_ {
+#footer_,
+#link_ {
   margin: 5px;
 }
