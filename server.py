@@ -6,6 +6,10 @@ db_session.global_init("db/CarNumbers.db")
 app = Flask(__name__)
 
 
+def redirect_():
+    return redirect(url_for('index'))
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     rendered_template = render_template('index.html', result="")
@@ -28,29 +32,41 @@ def index():
 def add():
     rendered_template = render_template('addPage.html')
     if request.method == 'POST':
-        owner = Owner()
-        owner.carsNumber = request.form['numberInput']
-        owner.surname = request.form['surnameInput']
-        owner.name = request.form['nameInput']
-        owner.patronymic = request.form['patronymicInput']
-        owner.flat = request.form['flatInput']
-        owner.phone = request.form['phoneInput']
-        owner.carsModel = request.form['carInput']
-        db_sess = db_session.create_session()
-        db_sess.add(owner)
-        db_sess.commit()
-        db_sess.close()
-        return redirect(url_for('index'))
+        try:
+            owner = Owner()
+            owner.carsNumber = request.form['numberInput']
+            owner.surname = request.form['surnameInput']
+            owner.name = request.form['nameInput']
+            owner.patronymic = request.form['patronymicInput']
+            owner.flat = request.form['flatInput']
+            owner.phone = request.form['phoneInput']
+            owner.carsModel = request.form['carInput']
+            db_sess = db_session.create_session()
+            db_sess.add(owner)
+            db_sess.commit()
+            db_sess.close()
+            return redirect_()
+        except Exception:
+            return rendered_template
     else:
         return rendered_template
 
 
 @app.route('/remove', methods=['GET', 'POST'])
 def remove():
+    rendered_template = render_template('removePage.html')
     if request.method == 'POST':
-        return render_template('removePage.html')
+        try:
+            db_sess = db_session.create_session()
+            input_ = request.form['input_']
+            db_sess.query(Owner).filter(Owner.carsNumber == input_).delete()
+            db_sess.commit()
+            db_sess.close()
+            return redirect_()
+        except Exception:
+            return rendered_template
     else:
-        return render_template('removePage.html')
+        return rendered_template
 
 
 if __name__ == '__main__':
