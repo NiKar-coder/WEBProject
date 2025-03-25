@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 from data import db_session
 from data.owners import Owner
 
@@ -26,10 +26,23 @@ def index():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
+    rendered_template = render_template('addPage.html')
     if request.method == 'POST':
-        return render_template('addPage.html')
+        owner = Owner()
+        owner.carsNumber = request.form['numberInput']
+        owner.surname = request.form['surnameInput']
+        owner.name = request.form['nameInput']
+        owner.patronymic = request.form['patronymicInput']
+        owner.flat = request.form['flatInput']
+        owner.phone = request.form['phoneInput']
+        owner.carsModel = request.form['carInput']
+        db_sess = db_session.create_session()
+        db_sess.add(owner)
+        db_sess.commit()
+        db_sess.close()
+        return redirect(url_for('index'))
     else:
-        return render_template('addPage.html')
+        return rendered_template
 
 
 @app.route('/remove', methods=['GET', 'POST'])
