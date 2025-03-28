@@ -1,4 +1,10 @@
 {% extends "source.html" %} {% block content %}
+<script>
+  if ("{{alert}}" === "true") {
+    alert("{{message}}");
+    window.location.href = "{{ url_for('index') }}";
+  }
+</script>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col text-center">
