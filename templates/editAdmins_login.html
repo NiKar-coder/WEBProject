@@ -2,7 +2,9 @@
 <script>
   if ("{{alert}}" === "true") {
     alert("{{message}}");
-    window.location.href = "{{ url_for('index') }}";
+  }
+  if ("{{login}}" === "true") {
+    window.location.href = "{{ url_for('editAdmins') }}";
   }
 </script>
 <div class="container">
@@ -13,12 +15,19 @@
           <input
             class="form-control"
             type="text"
-            name="input_"
+            name="loginInput"
             id="input_"
-            placeholder="Введите номер для удаления"
+            placeholder="Введите логин"
           />
-          <button type="submit" id="btn_" class="btn btn-success">
-            Удалить!
+          <input
+            class="form-control"
+            type="text"
+            name="passwordInput"
+            id="input_"
+            placeholder="Введите пароль"
+          />
+          <button type="submit" id="btn_s" class="btn btn-success">
+            Войти!
           </button>
         </form>
       </div>

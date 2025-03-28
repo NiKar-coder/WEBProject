@@ -1,0 +1,22 @@
+{
+  "admins": [
+    {
+      "login": "admin",
+      "password": "admin",
+      "db": "true",
+      "excluded": "true"
+    },
+    {
+      "login": "NiKar-coder",
+      "password": "123",
+      "db": "true",
+      "excluded": "false"
+    },
+    {
+      "login": "John",
+      "password": "1234",
+      "db": "false",
+      "excluded": "true"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{% extends "source.html" %} {% block content %}
+<script>
+  if ("{{alert}}" === "true") {
+    alert("{{message}}");
+    window.location.href = "{{ url_for('index') }}";
+  }
+</script>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <div class="container d-flex justify-content-center">
+        <form method="post">
+          <input
+            class="form-control"
+            type="text"
+            name="loginInput"
+            id="input_"
+            placeholder="Введите логин для добавления"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="passwordInput"
+            id="input_"
+            placeholder="Введите пароль для добавления"
+          />
+          <div class="form-group form-check">
+            <label class="form-check-label" for="DB_access">Доступ к БД</label>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="DB_access"
+              name="DB_access"
+            />
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label" for="BL_access">Доступ к ЧС</label>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="BL_access"
+              name="BL_access"
+            />
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label" for="admins_access"
+              >Доступ к редактированию администараторов</label
+            >
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="admins_access"
+              name="admins_access"
+            />
+          </div>
+          <button type="submit" id="btn_s" class="btn btn-success">
+            Добавить!
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

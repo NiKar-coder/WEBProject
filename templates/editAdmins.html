@@ -1,0 +1,22 @@
+{% extends "source.html" %} {% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <div class="container d-flex justify-content-center">
+        <a
+          class="link-opacity-100 link-opacity-25-hover link-underline-info"
+          href="{{ url_for('addAdmin') }}"
+          id="link_"
+          >Добавить</a
+        >
+        <a
+          class="link-opacity-100 link-opacity-25-hover link-underline-info"
+          href="{{ url_for('removeAdmin') }}"
+          id="link_"
+          >Удалить</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
