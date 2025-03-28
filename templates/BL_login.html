@@ -1,0 +1,37 @@
+{% extends "source.html" %} {% block content %}
+<script>
+  if ("{{alert}}" === "true") {
+    alert("{{message}}");
+  }
+  if ("{{login}}" === "true") {
+    window.location.href = "{{ url_for('editBL') }}";
+  }
+</script>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <div class="container d-flex justify-content-center">
+        <form method="post">
+          <input
+            class="form-control"
+            type="text"
+            name="loginInput"
+            id="input_"
+            placeholder="Введите логин"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="passwordInput"
+            id="input_"
+            placeholder="Введите пароль"
+          />
+          <button type="submit" id="btn_s" class="btn btn-success">
+            Войти!
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

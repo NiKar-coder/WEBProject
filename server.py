@@ -228,6 +228,81 @@ def DB_login():
                                login="false")
 
 
+@app.route('/editBL_login', methods=['GET', 'POST'])
+def editBL_login():
+    if request.method == 'POST':
+        try:
+            login = request.form['loginInput']
+            password = request.form['passwordInput']
+            with open('admins.json', 'r') as file:
+                admins = json.load(file)
+            for el in admins['admins']:
+                if login == el['login'] and password == el['password']\
+                        and el['excluded'] == "true":
+                    return render_template('BL_login.html', alert="true",
+                                           login="true",
+                                           message="Вы успешно вошли"
+                                           )
+            return render_template('Bl_login.html', alert="true",
+                                   message="Неверный логин или пароль",
+                                   login="false")
+        except Exception:
+            return render_template('BL_login.html', alert="true",
+                                   message="Ошибка входа",
+                                   login="false")
+    else:
+        return render_template('BL_login.html', alert="false",
+                               login="false")
+
+
+@app.route('/editBL', methods=['GET', 'POST'])
+def editBL():
+    return render_template('editBL.html')
+
+
+@app.route('/addBL', methods=['GET', 'POST'])
+def addBL():
+    if request.method == 'POST':
+        try:
+            carsNumber = request.form['input_']
+            with open('excluded.json', 'r') as file:
+                excluded = json.load(file)
+            excluded['excluded'].append(carsNumber)
+            with open('excluded.json', 'w') as file:
+                json.dump(excluded, file, ensure_ascii=False)
+            return render_template('addBL.html', alert="true",
+                                   message="Номер " + carsNumber +
+                                   " успешно добавлен в ЧС")
+        except Exception:
+            return render_template('addBL.html', alert="true",
+                                   message="Ошибка добавления")
+    else:
+        return render_template('addBL.html', alert="false")
+
+
+@app.route('/deleteBL', methods=['GET', 'POST'])
+def deleteBL():
+    if request.method == 'POST':
+        try:
+            carsNumber = request.form['input_']
+            with open('excluded.json', 'r') as file:
+                excluded = json.load(file)
+            for el in excluded['excluded']:
+                if el == carsNumber:
+                    excluded['excluded'].remove(el)
+            with open('excluded.json', 'w') as file:
+                json.dump(excluded, file, ensure_ascii=False)
+            return render_template('removePage.html', alert="true",
+                                   message="Номер " +
+                                   carsNumber +
+                                   " успешно удален из ЧС")
+        except Exception:
+            return render_template('removePage.html', alert="true",
+                                   message="Ошибка удаления")
+    else:
+        return render_template('removePage.html', alert="false")
+
+
 @app.route('/editDB')
 def editDB():
     return render_template('editDB.html')
