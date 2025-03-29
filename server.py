@@ -83,10 +83,11 @@ def editAdmins_login():
                     return render_template('editAdmins_login.html',
                                            alert="true",
                                            login="true",
-                                           message="Вы успешно вошли"
+                                           message=f"Здравствуйте, {login}"
                                            )
             return render_template('editAdmins_login.html', alert="true",
-                                   message="Неверный логин или пароль",
+                                   message="У Вас нет прав администратора " +
+                                   "или введены неверные данные",
                                    login="false")
         except Exception:
             return render_template('editAdmins_login.html', alert="true",
@@ -214,10 +215,11 @@ def DB_login():
                         and el['db'] == "true":
                     return render_template('DB_login.html', alert="true",
                                            login="true",
-                                           message="Вы успешно вошли"
+                                           message=f"Здравствуйте, {login}"
                                            )
             return render_template('DB_login.html', alert="true",
-                                   message="Неверный логин или пароль",
+                                   message="У Вас нет прав администратора " +
+                                   "или введены неверные данные",
                                    login="false")
         except Exception:
             return render_template('DB_login.html', alert="true",
@@ -241,10 +243,11 @@ def editBL_login():
                         and el['excluded'] == "true":
                     return render_template('BL_login.html', alert="true",
                                            login="true",
-                                           message="Вы успешно вошли"
+                                           message=f"Здравствуйте, {login}"
                                            )
-            return render_template('Bl_login.html', alert="true",
-                                   message="Неверный логин или пароль",
+            return render_template('BL_login.html', alert="true",
+                                   message="У Вас нет прав администратора " +
+                                   "или введены неверные данные",
                                    login="false")
         except Exception:
             return render_template('BL_login.html', alert="true",
